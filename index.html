@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sorteio de Nomes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    input[type="text"] {
+      width: 200px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #resultado {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sorteio 💵2.400,00 Pra 2💵✅✅🤝🏽</h1>
+
+  <form id="nomeForm">
+    <label for="nome1">Nome 1:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <!-- Repita este bloco para adicionar os 11 campos de nome -->
+    <label for="nome2">Nome 2:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome3">Nome 3:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome4">Nome 4:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome5">Nome 5:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome6">Nome 6:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome7">Nome 7:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome8">Nome 8:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome9">Nome 9:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome10">Nome 10:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome11">Nome 11:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <label for="nome12">Nome 12:</label>
+    <input type="text" class="nomes" required><br><br>
+
+    <button type="button" onclick="sortearNome()">Sortear</button>
+  </form>
+
+  <p id="resultado"></p>
+
+  <script>
+    function sortearNome() {
+      const nomesInputs = document.getElementsByClassName("nomes");
+      const nomes = [];
+
+      for (let i = 0; i < nomesInputs.length; i++) {
+        nomes.push(nomesInputs[i].value);
+      }
+
+      const indiceSorteado = Math.floor(Math.random() * nomes.length);
+      const nomeSorteado = nomes[indiceSorteado];
+
+      const resultado = document.getElementById("resultado");
+      resultado.textContent = `O nome sorteado é: ${nomeSorteado}`;
+    }
+  </script>
+</body>
+</html>
