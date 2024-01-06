@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Sorteio de Nomes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Meta tag para ajustar a escala -->
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -14,6 +16,7 @@
 
     h1 {
       color: #333;
+      font-size: 32px;
     }
 
     .nomesDisponiveis {
@@ -36,6 +39,39 @@
       display: block;
       margin-top: 20px;
       font-weight: bold;
+    }
+
+    /* Estilos para dispositivos móveis */
+    @media only screen and (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .nomesDisponiveis {
+        width: 100%;
+      }
+
+      .nomesDisponiveis label {
+        font-size: 14px;
+      }
+
+      #nomeForm {
+        margin-top: 20px;
+      }
+
+      #nomeSorteado {
+        width: 80%;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      button {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
