@@ -1,122 +1,146 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Sorteio de Nomes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Meta tag para ajustar a escala -->
+<h2>Sistema de cadastro de ocorrências P3/18º BPM</h2>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-    }
+<form action="/pagina-processa-dados-do-form" method="post">
+  <fieldset>
+    <legend>Dados da Ocorrência</legend>
+    <label for="descricao">Descrição do Fato:</label>
+    <input type="text" minlength="3" id="descricao" />
+    <label for="data_ocorrencia">Data da ocorrência:</label>
+    <input type="date" id="data_ocorrencia" />
+    <label for="hora_ocorrencia">Hora:</label>
+    <input type="time" id="hora_ocorrencia" />
+    <label for="endereco_local">Endereço do local da ocorrência:</label>
+    <input type="text" id="endereco_local" />
+    <label for="bairro">Bairro:</label>
+    <input type="text" id="bairro" />
+    <label for="cidade">Cidade:</label>
+    <input type="text" id="cidade" />
+    <label for="procedimento">Procedimento adotado:</label>
+    <input type="text" id="procedimento" />
+  </fieldset>
 
-    h1 {
-      color: #333;
-      font-size: 32px;
-    }
+  <fieldset>
+    <legend>Dados do Envolvido 01</legend>
+    <label for="tipo_endereco_01">Tipo:</label>
+    <select id="tipo_endereco_01">
+      <option value=""></option>
+      <option value="autor">Autor</option>
+      <option value="vitima">Vítima</option>
+      <option value="testemunha">Testemunha</option>
+      <option value="suspeito">Suspeito</option>
+      <option value="vitima_fatal">Vítima fatal</option>
+    </select>
+    <label for="nome_01">Nome:</label>
+    <input type="text" id="nome_01" />
+    <label for="endereco_01">Endereço:</label>
+    <input type="text" id="endereco_01" />
+    <label for="nascimento_01">Data de Nascimento:</label>
+    <input type="date" id="nascimento_01" />
+    <label for="rg_01">RG:</label>
+    <input type="text" id="rg_01" />
+    <label for="cpf_01">CPF:</label>
+    <input type="text" id="cpf_01" />
+  </fieldset>
 
-    .nomesDisponiveis {
-      text-align: left;
-      display: inline-block;
-      width: 200px;
-    }
+  <fieldset>
+    <legend>Dados do Envolvido 02</legend>
+    <label for="tipo_endereco_02">Tipo:</label>
+    <select id="tipo_endereco_02">
+      <option value=""></option>
+      <option value="autor">Autor</option>
+      <option value="vitima">Vítima</option>
+      <option value="testemunha">Testemunha</option>
+      <option value="suspeito">Suspeito</option>
+      <option value="vitima_fatal">Vítima fatal</option>
+    </select>
+    <label for="nome_02">Nome:</label>
+    <input type="text" id="nome_02" />
+    <label for="endereco_02">Endereço:</label>
+    <input type="text" id="endereco_02" />
+    <label for="nascimento_02">Data de Nascimento:</label>
+    <input type="date" id="nascimento_02" />
+    <label for="rg_02">RG:</label>
+    <input type="text" id="rg_02" />
+    <label for="cpf_02">CPF:</label>
+    <input type="text" id="cpf_02" />
+  </fieldset>
 
-    .nomesDisponiveis label {
-      display: block;
-      margin-bottom: 5px;
-      color: #555;
-    }
+  <fieldset>
+    <legend>Dados do Envolvido 03</legend>
+    <label for="tipo_endereco_03">Tipo:</label>
+    <select id="tipo_endereco_03">
+      <option value=""></option>
+      <option value="autor">Autor</option>
+      <option value="vitima">Vítima</option>
+      <option value="testemunha">Testemunha</option>
+      <option value="suspeito">Suspeito</option>
+      <option value="vitima_fatal">Vítima fatal</option>
+    </select>
+    <label for="nome_03">Nome:</label>
+    <input type="text" id="nome_03" />
+    <label for="endereco_03">Endereço:</label>
+    <input type="text" id="endereco_03" />
+    <label for="nascimento_03">Data de Nascimento:</label>
+    <input type="date" id="nascimento_03" />
+    <label for="rg_03">RG:</label>
+    <input type="text" id="rg_03" />
+    <label for="cpf_03">CPF:</label>
+    <input type="text" id="cpf_03" />
+  </fieldset>
 
-    .nomesDisponiveis input[type="checkbox"] {
-      margin-right: 5px;
-    }
-
-    #resultado {
-      display: block;
-      margin-top: 20px;
-      font-weight: bold;
-    }
-
-    /* Estilos para dispositivos móveis */
-    @media only screen and (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      .nomesDisponiveis {
-        width: 100%;
-      }
-
-      .nomesDisponiveis label {
-        font-size: 14px;
-      }
-
-      #nomeForm {
-        margin-top: 20px;
-      }
-
-      #nomeSorteado {
-        width: 80%;
-        margin-bottom: 10px;
-        font-size: 16px;
-      }
-
-      button {
-        font-size: 16px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>Sorteio 💵2.400,00 Pra 2💵✅✅🤝🏽</h1>
-
-  <div class="nomesDisponiveis">
-    <label><input type="checkbox" value="Cunha"> Cunha</label>
-    <label><input type="checkbox" value="Emanuel"> Emanuel</label>
-    <label><input type="checkbox" value="Filho"> Filho</label>
-    <label><input type="checkbox" value="Janis"> Janis</label>
-    <label><input type="checkbox" value="Josué"> Josué</label>
-    <label><input type="checkbox" value="Julio"> Julio</label>
-    <label><input type="checkbox" value="Lee"> Lee</label>
-    <label><input type="checkbox" value="Marcos Paulo"> Marcos Paulo</label>
-    <label><input type="checkbox" value="Marreiros"> Marreiros</label>
-    <label><input type="checkbox" value="Moraes"> Moraes</label>
-    <label><input type="checkbox" value="Rondey"> Rondey</label>
-    <label><input type="checkbox" value="Xavier"> Xavier</label>
-  </div>
-
-  <br>
-
-  <form id="nomeForm">
-    <label for="nomeSorteado">Nome Sorteado:</label>
-    <input type="text" id="nomeSorteado" readonly><br><br>
-
-    <button type="button" onclick="sortearNome()">Sortear</button>
-  </form>
-
-  <script>
-    function sortearNome() {
-      const checkboxes = document.querySelectorAll('.nomesDisponiveis input[type="checkbox"]:checked');
-      const nomes = Array.from(checkboxes).map(checkbox => checkbox.value);
-
-      if (nomes.length > 0) {
-        const indiceSorteado = Math.floor(Math.random() * nomes.length);
-        const nomeSorteado = nomes[indiceSorteado];
-
-        const nomeSorteadoCampo = document.getElementById("nomeSorteado");
-        nomeSorteadoCampo.value = nomeSorteado;
-      } else {
-        alert('Por favor, selecione pelo menos um nome para sortear.');
-      }
-    }
-  </script>
-</body>
-</html>
+  <fieldset>
+    <legend>Dados do Envolvido 04</legend>
+    <label for="tipo_endereco_04">Tipo:</label>
+    <select id="tipo_endereco_04">
+      <option value=""></option>
+      <option value="autor">Autor</option>
+      <option value="vitima">Vítima</option>
+      <option value="testemunha">Testemunha</option>
+      <option value="suspeito">Suspeito</option>
+      <option value="vitima_fatal">Vítima fatal</option>
+    </select>
+    <label for="nome_04">Nome:</label>
+    <input type="text" id="nome_04" />
+    <label for="endereco_04">Endereço:</label>
+    <input type="text" id="endereco_04" />
+    <label for="nascimento_04">Data de Nascimento:</label>
+    <input type="date" id="nascimento_04" />
+    <label for="rg_04">RG:</label>
+    <input type="text" id="rg_04" />
+    <label for="cpf_04">CPF:</label>
+    <input type="text" id="cpf_04" />
+  </fieldset>
+  
+  <fieldset>
+    <legend>Histórico da Ocorrência</legend>
+    <textarea type="text" id="msg" rows="8" cols="80"></textarea>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Materiais Apreendidos</legend>
+    <textarea type="text" id="materiais_apreendidos" rows="8" cols="80"></textarea>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Efetivo envolvido</legend>
+    <div style="display: flex; flex-direction: column;">
+        <label for="procedimento1">Posto/Nome/Graduação:</label>
+        <input type="text" id="procedimento1" />
+        <label for="procedimento2">Posto/Nome/Graduação:</label>
+        <input type="text" id="procedimento2" />
+        <label for="procedimento3">Posto/Nome/Graduação:</label>
+        <input type="text" id="procedimento3" />
+        <label for="procedimento4">Posto/Nome/Graduação:</label>
+        <input type="text" id="procedimento4" />
+        <label for="procedimento5">Posto/Nome/Graduação:</label>
+        <input type="text" id="procedimento5" />
+        <label for="procedimento6">Posto/Nome/Graduação:</label>
+        <input type="text" id="procedimento6" />
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <button type="submit">Enviar</button>
+    <button type="reset">Limpar Formulário</button>
+  </fieldset>
+</form>
